@@ -137,7 +137,7 @@ def update_weibo(strr):
     url_post_a_text = "https://api.weibo.com/2/statuses/update.json"
     # 构建POST参数
     playload = {
-        "access_token": "2.00A_AkxF764aLC1380df04bbznpX4D",
+        "access_token": "", #此处填入自己申请应用时显示的，隐私问题将此删除
         "status": strr
     }
     # POST请求，发表文字微博
