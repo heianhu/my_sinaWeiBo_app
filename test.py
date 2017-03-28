@@ -120,11 +120,13 @@ def history_today2(month,day):
     response = urllib.request.urlopen(request)
     data = response.read()
 
-    soup = BeautifulSoup(data,"lxml")
+    soup = BeautifulSoup(data) #如果添加过'lxml'库的话改为BeautifulSoup(data,"lxml")
     s = soup.select('a[target="_blank"] ')
     ss = ''
     flag=1
     for i in s[4:16:2]:
+        if len(ss)+len(i.string)>125:
+            break
         ss += i.string
         ss+='\n'
     return ss
@@ -145,4 +147,5 @@ now=(time.localtime(time.time())[0],time.localtime(time.time())[1],time.localtim
 strr=''
 strr+=history_today2(now[1],now[2])
 strr+=dao_ji_shi(now)
+#print (strr)
 update_weibo(strr)
